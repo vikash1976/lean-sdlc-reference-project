@@ -2,7 +2,7 @@
 
 A sample reference project inline with lean sdlc quality demands like
 -	100% code coverage
--	100 muttaion coverage
+-	100% muttaion coverage
 -	Build should break if-
 	-	any common programming mistakes are caught at compile-time. It uses [errorprone](https://github.com/google/error-prone/) for this.
 	-	Any stage failure breaks the build pipeline	
