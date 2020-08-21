@@ -78,42 +78,40 @@ This projet uses following plugins and tools -
 -	[jacoco maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) is enabled to break the build post unit and integration test (if enabled) if threshold numbers defined in pom.xml is not met, by including below listed execution as part of jacoco-maven plugin configuration.
 ```xml
 <execution>
-						<id>default-check</id>
-						<goals>
-							<goal>check</goal>
-						</goals>
-						<configuration>
-							<destFile>${sonar.jacoco.reportPath}</destFile>
-							<append>true</append>
-							<rules>
-								<rule>
-									<element>CLASS</element>
-									<excludes>
-										<exclude>*Test</exclude>
-										<exclude>*IT</exclude>
-										<exclude>*SpringBootTestingApplication</exclude>
+		<id>default-check</id>
+		<goals>
+			<goal>check</goal>
+		</goals>
+		<configuration>
+			<destFile>${sonar.jacoco.reportPath}</destFile>
+			<append>true</append>
+			<rules>
+			<rule>
+					<element>CLASS</element>
+					<excludes>
+						<exclude>*Test</exclude>
+						<exclude>*IT</exclude>
+						<exclude>*SpringBootTestingApplication</exclude>
+						
+					</excludes>
+					<limits>
+						<limit>
+							<counter>LINE</counter>
+							<value>COVEREDRATIO</value>
+							<minimum>100%</minimum>
+						</limit>
+						<limit>
+							<counter>BRANCH</counter>
+							<value>COVEREDRATIO</value>
+							<minimum>100%</minimum>
+						</limit>
+					</limits>
+				</rule>
+				
+			</rules>
+		</configuration>
+	</execution>
 
-									</excludes>
-									<limits>
-										<limit>
-											<counter>LINE</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>100%</minimum>
-										</limit>
-										<limit>
-											<counter>BRANCH</counter>
-											<value>COVEREDRATIO</value>
-											<minimum>100%</minimum>
-										</limit>
-									</limits>
-								</rule>
-								<!-- <rule> <element>BUNDLE</element> <excludes> <exclude>*Test</exclude> 
-									<exclude>*IT</exclude> <exclude>*SpringBootTestingApplication</exclude> </excludes> 
-									<limits> <limit> <counter>INSTRUCTION</counter> <value>COVEREDRATIO</value> 
-									<minimum>100%</minimum> </limit> </limits> </rule> -->
-							</rules>
-						</configuration>
-					</execution>
 ```
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
