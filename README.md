@@ -2,7 +2,7 @@
 
 A sample reference project that aims to meet Lean SDLC code quality standards.  
 If you are writing a net new application in J2EE space you may like to use this project as sample.
-These are recommendations as per [Lean SDLC CI Quality Gate] and not a hard requirement.  
+These are recommendations as per [Lean SDLC CI Quality Gate] and **not a hard requirement**.  
 In case you prefer to have a different set of measures and threshold values, we recoomend you  define a suitable qualify gate for your needs.
 
 The Quality Gate measures and the threshold values are shown below:
