@@ -75,12 +75,52 @@ The Quality Gate measures and the threshold values are shown below:
 ```
 This projet uses following plugins and tools - 
 -	jacoco to collect and publish covergare metrics.
--	[jacoco maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) is enabled to break the build post unit and integration test (if enabled) if threshold numbers defined in pom.xml is not met. **This is enabled to catch the deviations as early as possible in CI cycle.**
+-	[jacoco maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) is enabled to break the build post unit and integration test (if enabled) if threshold numbers defined in pom.xml is not met, by including below listed execution as part of jacoco-maven plugin configuration.
+```xml
+<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+							<append>true</append>
+							<rules>
+								<rule>
+									<element>CLASS</element>
+									<excludes>
+										<exclude>*Test</exclude>
+										<exclude>*IT</exclude>
+										<exclude>*SpringBootTestingApplication</exclude>
+
+									</excludes>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>100%</minimum>
+										</limit>
+										<limit>
+											<counter>BRANCH</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>100%</minimum>
+										</limit>
+									</limits>
+								</rule>
+								<!-- <rule> <element>BUNDLE</element> <excludes> <exclude>*Test</exclude> 
+									<exclude>*IT</exclude> <exclude>*SpringBootTestingApplication</exclude> </excludes> 
+									<limits> <limit> <counter>INSTRUCTION</counter> <value>COVEREDRATIO</value> 
+									<minimum>100%</minimum> </limit> </limits> </rule> -->
+							</rules>
+						</configuration>
+					</execution>
+```
+**This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
--	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable mutation testing as part of the CI pipeline.
--	integration testing is enabled as part of a profile called 'integrationTest'. You can turn it ON/OFF per your need.
+-	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
+-	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
 
 Post successfull compilation the coverage metrics is sent to SonarQube for validation of metrics against quality gate (LEAN SDLC) metrics.
 
 The pipeline is designed to break at any stage faulire.
-The build logs are streamed into Splunk, so that one has an oppotunity to go back and audit any particular build of interest.
+The build logs are streamed into **Splunk**, so that one has an oppotunity to go back and audit any particular build of interest.
