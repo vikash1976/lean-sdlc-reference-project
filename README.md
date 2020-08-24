@@ -6,7 +6,7 @@ These are recommendations as per [Lean SDLC CI Quality Gate] and **not a hard re
 
 In case you prefer to have a different set of measures and threshold values, we recoomend you  define a suitable qualify gate for your needs in SonarQube.
 
-The Quality Gate measures and the threshold values are shown below:
+The Quality Gate measures and the threshold values are shown below ![Quality Gate](/src/main/resources/LEAN_SDLC_QG.JPG):
 ``` json
 {
 	"name": "Lean SDLC",
