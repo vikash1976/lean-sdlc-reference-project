@@ -2,7 +2,8 @@
 
 A sample reference project that aims to meet Lean SDLC code quality standards.  
 If you are writing a net new application in J2EE space you may like to use this project as sample.
-These are recommendations as per [Lean SDLC CI Quality Gate] and **not a hard requirement**.  
+These are recommendations as per [Lean SDLC CI Quality Gate] and **not a hard requirement** projects that are on their modernization journey.
+
 In case you prefer to have a different set of measures and threshold values, we recoomend you  define a suitable qualify gate for your needs.
 
 The Quality Gate measures and the threshold values are shown below:
@@ -114,11 +115,12 @@ This projet uses following plugins and tools -
 
 ```
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**
+If you like to break the build before for mutoationThreshold miss, you may like to append *-DmutationThreshold=100* to the *mvn clean verify sonar:sonar -PintegrationTest* as *mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100*.
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
 -	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
 
 Post successfull compilation the coverage metrics is sent to SonarQube for validation of metrics against quality gate (LEAN SDLC) metrics.
 
-The pipeline is designed to break at any stage faulire.
+The pipeline is designed to break at any build stage faulire.  
 The build logs are streamed into **Splunk**, so that one has an oppotunity to go back and audit any particular build of interest.
