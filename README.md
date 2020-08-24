@@ -115,7 +115,7 @@ This projet uses following plugins and tools -
 
 ```
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**
-If you like to break the build before for mutoationThreshold miss, you may like to append *-DmutationThreshold=100* to the *mvn clean verify sonar:sonar -PintegrationTest* as *mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100*.
+If you like to break the build before for mutoationThreshold miss, you may like to append *-DmutationThreshold=100* to the `*mvn clean verify sonar:sonar -PintegrationTest*` as `*mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100*`.
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
 -	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
