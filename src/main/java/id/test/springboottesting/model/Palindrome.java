@@ -16,8 +16,8 @@ public class Palindrome
     final char firstChar = word.charAt(0);
     final char lastChar = word.charAt(word.length() - 1);
     final String center = word.substring(1, word.length() - 1);
-    return (firstChar == lastChar) && isPalindrome(center);
-    //return firstChar == lastChar && isPalindrome(center);
+    //return (firstChar == lastChar) && isPalindrome(center);
+    return firstChar == lastChar && isPalindrome(center);
   }
 
 }
