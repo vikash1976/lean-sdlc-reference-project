@@ -29,6 +29,11 @@
 		<sonar.exclusions>
 			**/SpringBootTestingApplication.java
 		</sonar.exclusions>
+		<pmd-maven-version>3.13.0</pmd-maven-version>
+		<error_prone_core-version>2.4.0</error_prone_core-version>
+		<pit-maven-version>1.4.1</pit-maven-version>
+		<pitest-junit5-version>0.12</pitest-junit5-version>
+		<maven-surefire-version>2.22.0</maven-surefire-version>
 	</properties>
 
 	<dependencies>
@@ -95,11 +100,7 @@
 			<version>5.3.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> <groupId>org.junit.jupiter</groupId> <artifactId>junit-jupiter-api</artifactId> 
-			<version>5.6.2</version> <scope>test</scope> </dependency> <dependency> <groupId>org.junit.jupiter</groupId> 
-			<artifactId>junit-jupiter-engine</artifactId> <version>5.6.2</version> <scope>test</scope> 
-			</dependency> <dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest</artifactId> 
-			<version>2.2</version> <scope>test</scope> </dependency> -->
+
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-junit-jupiter</artifactId>
@@ -131,10 +132,7 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
-				<!-- <configuration> <skip>${maven.test.skip}</skip> <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile> 
-					<dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile> 
-					<output>file</output> <append>true</append> <excludes> <exclude>*MethodAccess</exclude> 
-					</excludes> </configuration> -->
+
 				<executions>
 					<execution>
 						<id>jacoco-initialize</id>
@@ -180,17 +178,12 @@
 										</limit>
 									</limits>
 								</rule>
-								<!-- <rule> <element>BUNDLE</element> <excludes> <exclude>*Test</exclude> 
-									<exclude>*IT</exclude> <exclude>*SpringBootTestingApplication</exclude> </excludes> 
-									<limits> <limit> <counter>INSTRUCTION</counter> <value>COVEREDRATIO</value> 
-									<minimum>100%</minimum> </limit> </limits> </rule> -->
+
 							</rules>
 						</configuration>
 					</execution>
 				</executions>
-				<!-- <configuration> <excludes> <exclude>id/test/springboottesting/SpringBootTestingApplication.class</exclude> 
-					<exclude>id/test/springboottesting/exception/ExceptionHandling.class</exclude> 
-					</excludes> </configuration> -->
+
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -213,9 +206,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<!-- <archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> 
-						<mainClass>id.test.springboottesting.SpringBootTestingApplication</mainClass> 
-						</manifest> </archive> -->
+
 					<source>11</source>
 					<target>11</target>
 					<fork>true</fork>
@@ -230,7 +221,7 @@
 						<path>
 							<groupId>com.google.errorprone</groupId>
 							<artifactId>error_prone_core</artifactId>
-							<version>2.4.0</version>
+							<version>${error_prone_core-version}</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
@@ -238,7 +229,7 @@
 					<dependency>
 						<groupId>com.google.errorprone</groupId>
 						<artifactId>error_prone_core</artifactId>
-						<version>2.4.0</version>
+						<version>${error_prone_core-version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -246,18 +237,18 @@
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
-				<version>1.5.1</version>
+				<version>${pit-maven-version}</version>
 				<dependencies>
 					<dependency>
 						<groupId>org.pitest</groupId>
 						<artifactId>pitest-junit5-plugin</artifactId>
-						<version>0.12</version>
+						<version>${pitest-junit5-version}</version>
 					</dependency>
 				</dependencies>
 				<executions>
 					<execution>
 						<id>pit-test</id>
-						<!-- optional, this example attached the goal into mvn test phase -->
+
 						<phase>verify</phase>
 						<goals>
 							<goal>mutationCoverage</goal>
@@ -300,6 +291,31 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${pmd-maven-version}</version> <!-- or use version from pluginManagement -->
+				<configuration>
+					<!-- failOnViolation is actually true by default, but can be disabled -->
+					<failOnViolation>true</failOnViolation>
+					<!-- printFailingErrors is pretty useful -->
+					<printFailingErrors>true</printFailingErrors>
+					<targetJdk>11</targetJdk>
+					<linkXRef>false</linkXRef>
+					<!--  Print details of check failures to build output -->
+					<!-- <verbose>true</verbose> -->
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+							<goal>cpd-check</goal>
+						</goals>
+					</execution>
+				</executions>
+
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -309,7 +325,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-surefire-plugin</artifactId>
-						<version>2.22.0</version>
+						<version>${maven-surefire-version}</version>
 						<executions>
 							<execution>
 								<phase>integration-test</phase>
