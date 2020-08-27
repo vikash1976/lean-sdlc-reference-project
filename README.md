@@ -53,14 +53,16 @@ This projet uses following plugins and tools -
 
 ```
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**  
-If you like to break the build before for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the *`mvn clean verify sonar:sonar -PintegrationTest`* as *`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
+
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
+If you like to break the build before for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the *`mvn clean verify sonar:sonar -PintegrationTest`* as *`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
 -	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
 
 Post successfull compilation the coverage metrics is sent to SonarQube for validation of metrics against quality gate (LEAN SDLC) metrics.
 
 The pipeline is designed to break at any build stage faulire.  
 The build logs are streamed into **Splunk**, so that one has an oppotunity to go back and audit any particular build of interest.
+
 The Quality Gate measures and the threshold values are shown below ![Quality Gate](/src/main/resources/Lean_SDLC_QG.JPG)  
 Quality Gate as JSON:
 ``` json
