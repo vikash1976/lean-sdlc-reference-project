@@ -35,7 +35,7 @@ This project uses following plugins and tools -
 [INFO] --- maven-pmd-plugin:3.13.0:cpd-check (default) @ leansdlc-reference-project ---
 [INFO] PMD version: 6.21.0
 ```
--	[Spotbugs](https://spotbugs.github.io/), **the spiritual successor of findbugs**, to catch bugs and break build. spotbugs check goal runs at **verify** phase.
+-	[Spotbugs](https://spotbugs.github.io/), **the spiritual successor of findbugs**, to catch bugs and break build. spotbugs check goal runs at **verify** phase. SpotBugs checks for more than 400 bug patterns. Bug descriptions can be found [here](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html)
 ```
 [INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
 [INFO] 
