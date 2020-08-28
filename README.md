@@ -8,48 +8,85 @@ In case you prefer to have a different set of measures and threshold values, we 
 
 This projet uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
--	It uses PMD Check and CPD check to catch static code analysis issue during validate phase even before compiling the code. It breaks the pipeline at very early stage if its not meeting the PMD default static code expectation. To verify this uncomment line# 19 of Palindrom.java.
+-	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. It breaks the pipeline at very early stage if its not meeting the PMD default static code expectation. To verify this uncomment line# 19 of Palindrom.java.
 ```java
 	//return (firstChar == lastChar) && isPalindrome(center);
     	return firstChar == lastChar && isPalindrome(center);
+```
+```
+ >>> maven-pmd-plugin:3.13.0:check (default) > :pmd @ leansdlc-reference-project >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.13.0:pmd (pmd) @ leansdlc-reference-project ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.13.0:check (default) < :pmd @ leansdlc-reference-project <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.13.0:check (default) @ leansdlc-reference-project ---
+[INFO] PMD version: 6.21.0
+[INFO] 
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.13.0:cpd-check (default) > :cpd @ leansdlc-reference-project >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.13.0:cpd (cpd) @ leansdlc-reference-project ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.13.0:cpd-check (default) < :cpd @ leansdlc-reference-project <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.13.0:cpd-check (default) @ leansdlc-reference-project ---
+[INFO] PMD version: 6.21.0
+```
+-	[Spotbugs](https://spotbugs.github.io/), **the spiritual successor of findbugs**, to catch bugs and break build. spotbugs check goal runs at **verify** phase.
+```
+[INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.0.4:spotbugs (spotbugs) @ leansdlc-reference-project ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] 
+[INFO] <<< spotbugs-maven-plugin:4.0.4:check (default) < :spotbugs @ leansdlc-reference-project <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.0.4:check (default) @ leansdlc-reference-project ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
 ```
 -	jacoco to collect and publish covergare metrics.
 -	[jacoco maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) is enabled to break the build post unit and integration test (if enabled) if threshold numbers defined in pom.xml is not met, by including below listed execution as part of jacoco-maven plugin configuration.
 ```xml
 <execution>
-		<id>default-check</id>
-		<goals>
-			<goal>check</goal>
-		</goals>
-		<configuration>
-			<destFile>${sonar.jacoco.reportPath}</destFile>
-			<append>true</append>
-			<rules>
+	<id>default-check</id>
+	<goals>
+		<goal>check</goal>
+	</goals>
+	<configuration>
+		<destFile>${sonar.jacoco.reportPath}</destFile>
+		<append>true</append>
+		<rules>
 			<rule>
-					<element>CLASS</element>
-					<excludes>
-						<exclude>*Test</exclude>
-						<exclude>*IT</exclude>
-						<exclude>*SpringBootTestingApplication</exclude>
-						
-					</excludes>
-					<limits>
-						<limit>
-							<counter>LINE</counter>
-							<value>COVEREDRATIO</value>
-							<minimum>100%</minimum>
-						</limit>
-						<limit>
-							<counter>BRANCH</counter>
-							<value>COVEREDRATIO</value>
-							<minimum>100%</minimum>
-						</limit>
-					</limits>
-				</rule>
-				
-			</rules>
-		</configuration>
-	</execution>
+				<element>CLASS</element>
+				<excludes>
+					<exclude>*Test</exclude>
+					<exclude>*IT</exclude>
+					<exclude>*SpringBootTestingApplication</exclude>
+
+				</excludes>
+				<limits>
+					<limit>
+						<counter>LINE</counter>
+						<value>COVEREDRATIO</value>
+						<minimum>100%</minimum>
+					</limit>
+					<limit>
+						<counter>BRANCH</counter>
+						<value>COVEREDRATIO</value>
+						<minimum>100%</minimum>
+					</limit>
+				</limits>
+			</rule>
+		</rules>
+	</configuration>
+</execution>
 
 ```
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**  
