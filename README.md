@@ -6,7 +6,7 @@ These are recommendations as per Lean SDLC CI Quality Gate and **not a hard requ
 
 In case you prefer to have a different set of measures and threshold values, we recommend you  define a suitable qualify gate for your needs in SonarQube.
 
-This projet uses following plugins and tools - 
+This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. It breaks the pipeline at very early stage if its not meeting the PMD default static code expectation. To verify this uncomment line# 19 of Palindrom.java.
 ```java
