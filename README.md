@@ -100,7 +100,7 @@ Post successfull compilation the coverage metrics is sent to SonarQube for valid
 The pipeline is designed to break at any build stage faulire.  
 The build logs are streamed into **Splunk**, so that one has an oppotunity to go back and audit any particular build of interest.
 
-The Quality Gate measures and the threshold values are shown below ![Quality Gate](/src/main/resources/Lean_SDLC_QG.JPG)  
+**The Quality Gate measures and the threshold values are shown below** ![Quality Gate](/src/main/resources/Lean_SDLC_QG.JPG)  
 Quality Gate as JSON:
 ``` json
 {
