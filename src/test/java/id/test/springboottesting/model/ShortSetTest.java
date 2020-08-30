@@ -17,4 +17,10 @@ public class ShortSetTest {
 
 		assertEquals(expectedSize, actualSize);
 	}
+	/*
+	 * @Test void returnBool() { Boolean expectedValue = null; Set<Short> s = new
+	 * HashSet<>(); Boolean actualValue = new ShortSet(s).returnBool();
+	 * 
+	 * assertEquals(expectedValue, actualValue); }
+	 */
 }

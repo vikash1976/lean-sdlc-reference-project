@@ -26,4 +26,7 @@ public class ShortSet {
 		}
 		return s.size();
 	}
+	/*
+	 * public Boolean returnBool() { return null; }
+	 */
 }
