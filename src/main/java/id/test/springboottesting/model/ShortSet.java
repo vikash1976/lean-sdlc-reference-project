@@ -12,13 +12,11 @@ import java.util.Set;
  */
 public class ShortSet {
 	private Set<Short> s;
-	
 
 	public ShortSet(Set<Short> s) {
 		super();
 		this.s = s;
 	}
-
 
 	public int justThat() {
 		for (short i = 0; i < 100; i++) {
@@ -26,7 +24,14 @@ public class ShortSet {
 		}
 		return s.size();
 	}
-	/*
-	 * public Boolean returnBool() { return null; }
-	 */
+
+	public Boolean returnBool() {
+		/*
+		 * uncomment this statement, the respective test will pass but Spotbugs will catch the bug that the
+		 * function expected to return Boolean is returning null.
+		 * return null
+		 */
+		return false;
+	}
+
 }

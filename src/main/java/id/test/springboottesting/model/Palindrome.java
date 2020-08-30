@@ -16,7 +16,10 @@ public class Palindrome
     final char firstChar = word.charAt(0);
     final char lastChar = word.charAt(word.length() - 1);
     final String center = word.substring(1, word.length() - 1);
-    //return (firstChar == lastChar) && isPalindrome(center);
+		/*
+		 * uncomment return (firstChar == lastChar) && isPalindrome(center); to see PMD
+		 * flags the error.
+		 */
     return firstChar == lastChar && isPalindrome(center);
   }
 

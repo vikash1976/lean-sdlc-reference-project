@@ -143,11 +143,7 @@
 			<version>1.2.5</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> <groupId>io.cucumber</groupId> <artifactId>cucumber-java11</artifactId> 
-			<version>4.2.6</version> <scope>test</scope> </dependency> <dependency> <groupId>io.cucumber</groupId> 
-			<artifactId>cucumber-spring</artifactId> <version>6.6.0</version> <scope>test</scope> 
-			</dependency> <dependency> <groupId>io.cucumber</groupId> <artifactId>cucumber-junit</artifactId> 
-			<version>6.6.0</version> <scope>test</scope> </dependency> -->
+		
 	</dependencies>
 
 	<build>
@@ -318,16 +314,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>${pmd-maven-version}</version> <!-- or use version from pluginManagement -->
+				<version>${pmd-maven-version}</version> 
 				<configuration>
-					<!-- failOnViolation is actually true by default, but can be disabled -->
+					
 					<failOnViolation>true</failOnViolation>
-					<!-- printFailingErrors is pretty useful -->
+					
 					<printFailingErrors>true</printFailingErrors>
 					<targetJdk>11</targetJdk>
 					<linkXRef>false</linkXRef>
-					<!-- Print details of check failures to build output -->
-					<!-- <verbose>true</verbose> -->
+					
 				</configuration>
 				<executions>
 					<execution>

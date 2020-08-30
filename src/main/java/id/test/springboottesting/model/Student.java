@@ -30,11 +30,7 @@ public class Student {
 	}
 
 	public boolean getResult() {
-		if (this.getMarks() < 60) {
-			return false;
-		} else {
-			return true;
-		}
+		return this.getMarks() >= 60;
 	}
 
 }
