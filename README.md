@@ -51,6 +51,42 @@ This project uses following plugins and tools -
 [INFO] Error size is 0
 [INFO] No errors/warnings found
 ```
+
+To see **Spotbugs** in action, uncomment below function in ShortSet.java:
+```java
+public Boolean returnBool() {
+		return null;
+	}
+```
+and the test function in ShortSetTest.java:
+```java
+@Test
+	void returnBool() {
+		Boolean expectedValue = null;
+		Set<Short> s = new HashSet<>();
+		Boolean actualValue = new ShortSet(s).returnBool();
+
+		assertEquals(expectedValue, actualValue);
+	}
+```
+You will fnd **Spotbugs** reporting that the code is in violation as shown below:
+```
+[INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.0.4:spotbugs (spotbugs) @ leansdlc-reference-project ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] 
+[INFO] <<< spotbugs-maven-plugin:4.0.4:check (default) < :spotbugs @ leansdlc-reference-project <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.0.4:check (default) @ leansdlc-reference-project ---
+[INFO] BugInstance size is 1
+[INFO] Error size is 0
+[INFO] Total bugs: 1
+[ERROR] Medium: id.test.springboottesting.model.ShortSet.returnBool() has Boolean return type and returns explicit null [id.test.springboottesting.model.ShortSet] At ShortSet.java:[line 30] NP_BOOLEAN_RETURN_NULL
+[INFO] 
+```
 -	jacoco to collect and publish covergare metrics.
 -	[jacoco maven plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html) is enabled to break the build post unit and integration test (if enabled) if threshold numbers defined in pom.xml is not met, by including below listed execution as part of jacoco-maven plugin configuration.
 ```xml
