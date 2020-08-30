@@ -55,21 +55,21 @@ This project uses following plugins and tools -
 To see **Spotbugs** in action, uncomment below function in ShortSet.java:
 ```java
 public Boolean returnBool() {
-		return null;
-	}
+	return null;
+}
 ```
 and the test function in ShortSetTest.java:
 ```java
 @Test
-	void returnBool() {
-		Boolean expectedValue = null;
-		Set<Short> s = new HashSet<>();
-		Boolean actualValue = new ShortSet(s).returnBool();
+void returnBool() {
+	Boolean expectedValue = null;
+	Set<Short> s = new HashSet<>();
+	Boolean actualValue = new ShortSet(s).returnBool();
 
-		assertEquals(expectedValue, actualValue);
-	}
+	assertEquals(expectedValue, actualValue);
+}
 ```
-You will fnd **Spotbugs** reporting that the code is in violation as shown below:
+You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEAN_RETURN_NULL** check as shown below:
 ```
 [INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
 [INFO] 
