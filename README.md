@@ -69,7 +69,7 @@ void returnBool() {
 	assertEquals(expectedValue, actualValue);
 }
 ```
-You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEAN_RETURN_NULL** check as shown below:
+You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEAN_RETURN_NULL** check (even though the unit test passes) as shown below:
 ```
 [INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
 [INFO] 
