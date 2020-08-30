@@ -1,6 +1,6 @@
 # Lean SDLC Reference SpringBoot Project
 
-A sample reference project that aims to meet Lean SDLC code quality standards.  
+A sample reference project that aims to meet Lean SDLC code quality standards.  It aims to have code coverage of 100%, mutation coverage of 100%, has sample class and respective BDD test using **Cucumber** and **Gherkin**.
 If you are writing a completely new application in J2EE space you may like to use this project as sample.
 These are recommendations as per Lean SDLC CI Quality Gate and **not a hard requirement** for projects that are on their modernization journey.
 
@@ -129,6 +129,7 @@ You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEA
 
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
 If you like to break the build before for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the *`mvn clean verify sonar:sonar -PintegrationTest`* as *`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
+-	Sample class, its **BDD** feature file, Steps definition file and BDD test runner class.
 -	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
 
 Post successfull compilation the coverage metrics is sent to SonarQube for validation of metrics against quality gate (LEAN SDLC) metrics.
