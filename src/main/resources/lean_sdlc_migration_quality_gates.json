@@ -1,0 +1,45 @@
+{
+	"id": 4,
+	"name": "Lean SDLC Migration",
+	"conditions": [
+		{
+			"id": 31,
+			"metric": "new_coverage",
+			"op": "LT",
+			"error": "100"
+		},
+		{
+			"id": 34,
+			"metric": "new_code_smells",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 35,
+			"metric": "new_bugs",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 36,
+			"metric": "new_violations",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 37,
+			"metric": "new_vulnerabilities",
+			"op": "GT",
+			"error": "0"
+		}
+	],
+	"isBuiltIn": false,
+	"actions": {
+		"rename": true,
+		"setAsDefault": true,
+		"copy": true,
+		"associateProjects": true,
+		"delete": true,
+		"manageConditions": true
+	}
+}

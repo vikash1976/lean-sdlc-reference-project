@@ -67,7 +67,7 @@ class UserControllerIT {
     @Test
     void shouldFetchOneUserById() throws Exception {
         final Long userId = 1L;
-        final User user = new User(1L, "ten@mail.com","teten","teten");
+        final User user = new User(userId, "user1@gmail.com", "pwd1","User1");
 
         given(userService.findUserById(userId)).willReturn(user);
 

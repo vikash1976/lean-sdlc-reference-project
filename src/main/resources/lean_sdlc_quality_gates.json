@@ -1,0 +1,75 @@
+{
+	"id": 3,
+	"name": "Lean SDLC",
+	"conditions": [
+		{
+			"id": 18,
+			"metric": "coverage",
+			"op": "LT",
+			"error": "100"
+		},
+		{
+			"id": 19,
+			"metric": "dc5_mutationAnalysis_mutations_coverage",
+			"op": "LT",
+			"error": "100"
+		},
+		{
+			"id": 20,
+			"metric": "sqale_rating",
+			"op": "GT",
+			"error": "1"
+		},
+		{
+			"id": 21,
+			"metric": "reliability_rating",
+			"op": "GT",
+			"error": "1"
+		},
+		{
+			"id": 22,
+			"metric": "code_smells",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 23,
+			"metric": "security_rating",
+			"op": "GT",
+			"error": "1"
+		},
+		{
+			"id": 24,
+			"metric": "blocker_violations",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 25,
+			"metric": "critical_violations",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 26,
+			"metric": "major_violations",
+			"op": "GT",
+			"error": "0"
+		},
+		{
+			"id": 27,
+			"metric": "minor_violations",
+			"op": "GT",
+			"error": "0"
+		}
+	],
+	"isBuiltIn": false,
+	"actions": {
+		"rename": true,
+		"setAsDefault": true,
+		"copy": true,
+		"associateProjects": true,
+		"delete": true,
+		"manageConditions": true
+	}
+}

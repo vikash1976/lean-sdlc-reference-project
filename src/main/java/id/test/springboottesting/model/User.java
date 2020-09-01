@@ -11,15 +11,15 @@ public class User {
 	
     private String email;
     
-    private String password;
+    private String entryKey;
     
 	private String name;
    
-    public User(Long id, String email, String password, String name) {
+    public User(Long id, String email, String entryKey, String name) {
 		super();
 		this.id = id;
 		this.email = email;
-		this.password = password;
+		this.entryKey = entryKey;
 		this.name = name;
 	}
 
@@ -43,13 +43,13 @@ public class User {
 	}
 
 
-	public String getPassword() {
-		return password;
+	public String getEntryKey() {
+		return entryKey;
 	}
 
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEntryKey(String entryKey) {
+		this.entryKey = entryKey;
 	}
 
 

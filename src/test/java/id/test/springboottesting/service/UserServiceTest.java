@@ -26,7 +26,7 @@ class UserServiceTest {
 	@Test
 	void shouldReturnFindAll() {
 		List<User> datas = new ArrayList<>();
-		String email = "ten@mail.com";
+		String email = "user@mail.com";
 		String name = "myname";
 		String pass = "my pass";
 		datas.add(new User(1L, email, pass, name));

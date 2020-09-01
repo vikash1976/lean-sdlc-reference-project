@@ -67,13 +67,13 @@ class UserControllerTest {
     @Test
     void shouldFetchOneUserById() throws Exception {
         final Long userId = 1L;
-        final User user = new User(1L, "ten@mail.com","teten","teten");
+        final User user = new User(userId, "user1@gmail.com", "pwd1","User1");
 
         given(userService.findUserById(userId)).willReturn(user);
 
         this.mockMvc.perform(get("/api/users/{id}", userId))
                 .andExpect(status().isOk())
-                //.andExpect(status().isNotFound()) - to introduce integration test error
+                
                 .andExpect(jsonPath("$.email", is(user.getEmail())))
                 .andExpect(jsonPath("$.name", is(user.getName())));
     }

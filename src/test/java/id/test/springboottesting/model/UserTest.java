@@ -34,13 +34,13 @@ public class UserTest {
 	    assertEquals(user.getName(), name);
 	}
 	@Test
-	public void testSetPassword() {
+	public void testSetEntryKey() {
 	    
-	    String password = "abc123";
+	    String entryKey = "abc123";
 	    User user = new User(1L, "a", "a", "a");
-	    user.setPassword(password);
+	    user.setEntryKey(entryKey);
 	    // TODO review the generated test code and remove the default call to fail.
-	    assertEquals(user.getPassword(), password);
+	    assertEquals(user.getEntryKey(), entryKey);
 	}
 
 }
