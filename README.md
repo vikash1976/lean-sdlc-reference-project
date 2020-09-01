@@ -53,17 +53,29 @@ This project uses following plugins and tools -
 [INFO] No errors/warnings found
 ```
 
-To see **Spotbugs** in action, uncomment below function in ShortSet.java:
+To see **Spotbugs** in action, uncomment statement accordingly in ShortSet.java:
 ```java
 public Boolean returnBool() {
-	return null;
+	/*
+	 * uncomment this statement, the respective test will pass but Spotbugs will catch the bug that the
+	 * function expected to return Boolean is returning null.
+	 * return null
+	 */
+	return false;
 }
 ```
 and the test function in ShortSetTest.java:
 ```java
 @Test
 void returnBool() {
-	Boolean expectedValue = null;
+	/*
+	 * uncomment this statement and change return in ShortSet.java function to
+	 * return null. This test will pass but Spotbugs will catch the bug that the
+	 * function expected to return Boolean is returning null.
+	 * Boolean expectedValue = null;
+	 */
+
+	Boolean expectedValue = false;
 	Set<Short> s = new HashSet<>();
 	Boolean actualValue = new ShortSet(s).returnBool();
 
@@ -131,6 +143,15 @@ You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEA
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
 If you like to break the build before for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the *`mvn clean verify sonar:sonar -PintegrationTest`* as *`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
 -	Sample class, its **BDD** feature file, Steps definition file and BDD test runner class.
+```
+[INFO] Running StudentTest
+
+1 Scenarios (1 passed)
+5 Steps (5 passed)
+0m0.187s
+
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 s - in StudentTest
+```
 -	integration testing is enabled as part of a profile called **'integrationTest'**. You can turn it ON/OFF per your need.
 
 Post successfull compilation the coverage metrics is sent to SonarQube for validation of metrics against quality gate (LEAN SDLC) metrics.
@@ -207,6 +228,9 @@ Quality Gate as JSON:
 	]
 }
 ```
+
+**The quality score the project received**:  
+![Sonar Measure](/src/main/resources/SonarMeasure.JPG)
 
 
 @vikash1976@gmail.com
