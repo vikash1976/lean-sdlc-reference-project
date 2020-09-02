@@ -7,12 +7,25 @@ These are recommendations as per Lean SDLC CI Quality Gate and **not a hard requ
 
 In case you prefer to have a different set of measures and threshold values, we recommend you  define a suitable qualify gate for your needs in SonarQube.
 
+**if you rely on SonarQube for your static code analysis you may like to comment pmd and splotbugs plugin in your pom file.**
+
+**Interesting read:**
+-	[Sonarqube java analyzer the only rule engine you need](https://blog.sonarsource.com/sonarqube-java-analyzer-the-only-rule-engine-you-need/)
+-	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
+-	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
--	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. It breaks the pipeline at very early stage if its not meeting the PMD default static code expectation. To verify this uncomment line# 19 of Palindrom.java.
+-	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. 
+It breaks the pipeline at very early stage if its not meeting the PMD default static code expectation. 
+To verify this uncomment line# 19 of Palindrom.java.
 ```java
 	//return (firstChar == lastChar) && isPalindrome(center);
     	return firstChar == lastChar && isPalindrome(center);
+```
+And chnage the value to true of this configuration
+```xml
+<!-- its true by default, turn it on, if you want to fail the build on violation -->
+<failOnViolation>false</failOnViolation>
 ```
 ```
  >>> maven-pmd-plugin:3.13.0:check (default) > :pmd @ leansdlc-reference-project >>>
@@ -36,7 +49,9 @@ This project uses following plugins and tools -
 [INFO] --- maven-pmd-plugin:3.13.0:cpd-check (default) @ leansdlc-reference-project ---
 [INFO] PMD version: 6.21.0
 ```
--	[Spotbugs](https://spotbugs.github.io/), **the spiritual successor of findbugs**, to catch bugs and break build. spotbugs check goal runs at **verify** phase. SpotBugs checks for more than 400 bug patterns. Bug descriptions can be found [here](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html)
+-	[Spotbugs](https://spotbugs.github.io/), **the spiritual successor of findbugs**, to catch bugs and break build. spotbugs check goal runs at **verify** phase. 
+SpotBugs checks for more than 400 bug patterns. Bug descriptions can be found [here](https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html)
+Spotbugs breaks the build when it finds any bug. 
 ```
 [INFO] >>> spotbugs-maven-plugin:4.0.4:check (default) > :spotbugs @ leansdlc-reference-project >>>
 [INFO] 
