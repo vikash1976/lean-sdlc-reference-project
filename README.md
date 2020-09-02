@@ -20,7 +20,7 @@ clean verify fr.jcgay.maven.plugins:buildplan-maven-plugin:list-plugin -Pintegra
 ```
 You will notice we are not firing sonar:sonar from command line any more. sonar-maven-plugin is configured in pom file and configured to run during **verify** phase. Note that there are a few more plugin like pit-test and spotbugs configured for verfiy phase, so its a good idea to have sonar plugin defined as last one in pom file.
 
-buildplan-maven-plugin gets us the build plan of the project, thus used command produces this at the end of the build:
+**buildplan-maven-plugin** gets us the build plan of the project, thus used command produces this at the end of the build:
 ```
 [INFO] Build Plan for leansdlc-spring-boot-reference: 
 maven-pmd-plugin -------------------------------------------------------
