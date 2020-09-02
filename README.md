@@ -14,7 +14,7 @@ In case you prefer to have a different set of measures and threshold values, we 
 -	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
 -	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
 
-##To build this project run following maven command:
+## To build this project run following maven command:
 ```
 clean verify fr.jcgay.maven.plugins:buildplan-maven-plugin:list-plugin -PintegrationTest
 ```
