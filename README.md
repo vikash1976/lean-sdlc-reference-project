@@ -157,7 +157,11 @@ You will fnd **Spotbugs** reporting that the code is in violation of **NP_BOOLEA
 **This is enabled to catch the deviations from expected threshold as early as possible in CI cycle.**  
 
 -	[pit-test](https://pitest.org/quickstart/maven/) plugin to enable **mutation testing** as part of the CI pipeline.
-If you like to break the build before for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the *`mvn clean verify sonar:sonar -PintegrationTest`* as *`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
+
+If you like to break the build at **verify phase** for mutation coverage missing mutoationThreshold, you may like to append **-DmutationThreshold=100** to the 
+*`mvn clean verify sonar:sonar -PintegrationTest`* 
+as 
+*`mvn clean verify sonar:sonar -PintegrationTest -DmutationThreshold=100`*.
 -	Sample class, its **BDD** feature file, Steps definition file and BDD test runner class.
 ```
 [INFO] Running StudentTest
