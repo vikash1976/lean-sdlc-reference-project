@@ -14,6 +14,51 @@ In case you prefer to have a different set of measures and threshold values, we 
 -	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
 -	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
 
+##To build this project run following maven command:
+```
+clean verify fr.jcgay.maven.plugins:buildplan-maven-plugin:list-plugin -PintegrationTest
+```
+You will notice we are not firing sonar:sonar from command line any more. sonar-maven-plugin is configured in pom file and configured to run during **verify** phase. Note that there are a few more plugin like pit-test and spotbugs configured for verfiy phase, so its a good idea to have sonar plugin defined as last one in pom file.
+
+buildplan-maven-plugin gets us the build plan of the project, thus used command produces this at the end of the build:
+```
+[INFO] Build Plan for leansdlc-spring-boot-reference: 
+maven-pmd-plugin -------------------------------------------------------
+    + validate               | default               | check           
+    + validate               | default               | cpd-check       
+maven-resources-plugin -------------------------------------------------
+    + process-resources      | default-resources     | resources       
+    + process-test-resources | default-testResources | testResources   
+maven-compiler-plugin --------------------------------------------------
+    + compile                | default-compile       | compile         
+    + compile                | compile               | compile         
+    + test-compile           | default-testCompile   | testCompile     
+    + test-compile           | testCompile           | testCompile     
+jacoco-maven-plugin ----------------------------------------------------
+    + test-compile           | jacoco-initialize     | prepare-agent   
+    + verify                 | jacoco-site           | report          
+    + verify                 | default-check         | check           
+maven-surefire-plugin --------------------------------------------------
+    + test                   | default-test          | test            
+    + integration-test       | default               | test            
+maven-jar-plugin -------------------------------------------------------
+    + package                | default-jar           | jar             
+maven-assembly-plugin --------------------------------------------------
+    + package                | default               | single          
+pitest-maven -----------------------------------------------------------
+    + verify                 | pit-test              | mutationCoverage
+spotbugs-maven-plugin --------------------------------------------------
+    + verify                 | default               | check           
+sonar-maven-plugin -----------------------------------------------------
+    + verify                 | sonar                 | sonar           
+maven-install-plugin ---------------------------------------------------
+    + install                | default-install       | install         
+maven-deploy-plugin ----------------------------------------------------
+    + deploy                 | default-deploy        | deploy          
+[INFO] ------------------------------------------------------------------------
+```
+
+
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. 
