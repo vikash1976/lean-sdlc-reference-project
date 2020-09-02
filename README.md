@@ -7,12 +7,13 @@ These are recommendations as per Lean SDLC CI Quality Gate and **not a hard requ
 
 In case you prefer to have a different set of measures and threshold values, we recommend you  define a suitable qualify gate for your needs in SonarQube.
 
-**if you rely on SonarQube for your static code analysis you may like to comment pmd and splotbugs plugin in your pom file.**
+**if you rely on SonarQube for your static code analysis you may like to comment out PMD and Splotbugs plugin in the pom file.**
 
-**Interesting read:**
+**Few Interesting read:**
 -	[Sonarqube java analyzer the only rule engine you need](https://blog.sonarsource.com/sonarqube-java-analyzer-the-only-rule-engine-you-need/)
 -	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
 -	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
+
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. 
