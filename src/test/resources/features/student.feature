@@ -1,4 +1,4 @@
-#Author: vikash.pandey@fisglobal.com
+#Author: vikash1976@gmail.com
 #Keywords Summary : To demo Cucumber intgration in sample project
 Feature: Student Certification
 Background: 
