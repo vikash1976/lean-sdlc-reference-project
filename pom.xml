@@ -149,6 +149,10 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
@@ -289,35 +293,15 @@
 					</outputFormats>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>id.test.springboottesting.SpringBootTestingApplication</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${pmd-maven-version}</version>
 				<configuration>
 
-					<!-- its true by default, turn it on, if you want to fail the build on violation -->
+					<!-- its true by default, turn it on, if you want to fail the build 
+						on violation -->
 					<failOnViolation>false</failOnViolation>
 
 					<printFailingErrors>true</printFailingErrors>
@@ -342,7 +326,7 @@
 
 			</plugin>
 			<!-- it fails the build when bug is found, if you want to rely on SonarQube, 
-			please comment this plugin -->
+				please comment this plugin -->
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
