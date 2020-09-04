@@ -1,7 +1,7 @@
 package id.test.springboottesting.model;
 
 /**
- * @author e1077326
+ * @author Vikash
  *
  */
 public class User {
