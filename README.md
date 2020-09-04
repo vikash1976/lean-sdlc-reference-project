@@ -16,7 +16,11 @@ In case you prefer to have a different set of measures and threshold values, we 
 
 ## To build this project run following maven command:
 ```
-clean verify sonar:sonar -PintegrationTest
+mvn clean verify sonar:sonar -PintegrationTest
+```
+## To build this project run following maven command:
+```
+java -jar .\target\leansdlc-reference-project-0.0.1-SNAPSHOT.jar
 ```
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
