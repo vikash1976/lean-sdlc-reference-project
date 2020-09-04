@@ -16,7 +16,15 @@ In case you prefer to have a different set of measures and threshold values, we 
 
 ## To build this project run following maven command:
 ```
+<<<<<<< HEAD
 clean verify fr.jcgay.maven.plugins:buildplan-maven-plugin:list-plugin -PintegrationTest
+=======
+mvn clean verify sonar:sonar -PintegrationTest
+```
+## To build this project run following maven command:
+```
+java -jar .\target\leansdlc-reference-project-0.0.1-SNAPSHOT.jar
+>>>>>>> a28d2b3... Update README.md
 ```
 You will notice we are not firing sonar:sonar from command line any more. sonar-maven-plugin is configured in pom file and configured to run during **verify** phase. Note that there are a few more plugin like pit-test and spotbugs configured for verfiy phase, so its a good idea to have sonar plugin defined as last one in pom file.
 
