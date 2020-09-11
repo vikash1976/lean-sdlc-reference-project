@@ -396,35 +396,5 @@
 		</profile>
 
 	</profiles>
-	<distributionManagement>
-
-		<repository>
-
-			<uniqueVersion>false</uniqueVersion>
-
-			<id>maven-releases</id>
-
-			<name>Maven Releases</name>
-
-			<url>https://nexus.luigi.worldpay.io/repository/maven-releases/</url>
-
-			<layout>default</layout>
-
-		</repository>
-
-		<snapshotRepository>
-
-			<uniqueVersion>true</uniqueVersion>
-
-			<id>maven-snapshots</id>
-
-			<name>Maven Snapshots</name>
-
-			<url>https://nexus.luigi.worldpay.io/repository/maven-snapshots/</url>
-
-			<layout>default</layout>
-
-		</snapshotRepository>
-
-	</distributionManagement>
+	
 </project>
