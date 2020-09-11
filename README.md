@@ -20,7 +20,7 @@ mvn clean verify sonar:sonar -PintegrationTest
 ```
 ## To build this project run following maven command:
 ```
-java -jar .\target\leansdlc-reference-project-0.0.1-SNAPSHOT.jar
+java -jar .\target\leansdlc-reference-project-*.jar
 ```
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
