@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.vikash</groupId>
-	<artifactId>leansdlc-reference-project</artifactId>
+	<artifactId>leansdlc-reference-project-rnd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>leansdlc-spring-boot-reference</name>
+	<name>leansdlc-spring-boot-reference-rnd</name>
 	<description>Demo project for sample lean sdlc pipeline</description>
 
 	<properties>
@@ -293,7 +293,7 @@
 					</outputFormats>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
