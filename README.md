@@ -1,11 +1,11 @@
 # Lean SDLC Reference SpringBoot Project
 
-A sample reference project that aims to meet Lean SDLC code quality standards.  It aims to have code coverage of 100%, mutation coverage of 100%, has sample class and respective BDD test using **Cucumber** and **Gherkin**. *It also aims to catch any coding issues, PMD static scan checks, Spotbugs checks, lower code coverage & mutation coverage than defined thresholds and fail the build as early as possible in the CI cycle*.  
+A sample reference project that aims to meet Lean SDLC code quality standards.  It aims to have **code coverage of 100%, mutation coverage of 100%, 'A' rating for reliability, security & maintainability, 0 issues and 0 code smell** has sample class and respective BDD test using **Cucumber** and **Gherkin**. *It also aims to catch any coding issues, PMD static scan checks, Spotbugs checks, lower code coverage & mutation coverage than defined thresholds and fail the build as early as possible in the CI cycle*.  
 
 If you are writing a completely new application in J2EE space you may like to use this project as sample.
 These are recommendations as per Lean SDLC CI Quality Gate and **not a hard requirement** for projects that are on their modernization journey.
 
-In case you prefer to have a different set of measures and threshold values, we recommend you  define a suitable qualify gate for your needs in SonarQube.
+In case you prefer to have a different set of measures and threshold values, we recommend you  copy our Lean SDLC quality gate definition and adjust the gate conditions and threshold values accordingly in SonarQube.
 
 **if you rely on SonarQube for your static code analysis you may like to comment out PMD and Splotbugs plugin in the pom file.**
 
@@ -14,59 +14,23 @@ In case you prefer to have a different set of measures and threshold values, we 
 -	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
 -	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
 
-## To build this project run following maven command:
+## To build this project, run following maven command:
 ```
-<<<<<<< HEAD
-clean verify fr.jcgay.maven.plugins:buildplan-maven-plugin:list-plugin -PintegrationTest
-=======
-mvn clean verify sonar:sonar -PintegrationTest
+mvn clean verify sonar:sonar -PmutationTest,integrationTest
 ```
-## To build this project run following maven command:
+## To Skip integration and mutation test, run following maven command:
 ```
-java -jar .\target\leansdlc-reference-project-0.0.1-SNAPSHOT.jar
->>>>>>> a28d2b3... Update README.md
-```
-You will notice we are not firing sonar:sonar from command line any more. sonar-maven-plugin is configured in pom file and configured to run during **verify** phase. Note that there are a few more plugin like pit-test and spotbugs configured for verfiy phase, so its a good idea to have sonar plugin defined as last one in pom file.
-
-**buildplan-maven-plugin** gets us the build plan of the project, thus used command produces this at the end of the build:
-```
-[INFO] Build Plan for leansdlc-spring-boot-reference: 
-maven-pmd-plugin -------------------------------------------------------
-    + validate               | default               | check           
-    + validate               | default               | cpd-check       
-maven-resources-plugin -------------------------------------------------
-    + process-resources      | default-resources     | resources       
-    + process-test-resources | default-testResources | testResources   
-maven-compiler-plugin --------------------------------------------------
-    + compile                | default-compile       | compile         
-    + compile                | compile               | compile         
-    + test-compile           | default-testCompile   | testCompile     
-    + test-compile           | testCompile           | testCompile     
-jacoco-maven-plugin ----------------------------------------------------
-    + test-compile           | jacoco-initialize     | prepare-agent   
-    + verify                 | jacoco-site           | report          
-    + verify                 | default-check         | check           
-maven-surefire-plugin --------------------------------------------------
-    + test                   | default-test          | test            
-    + integration-test       | default               | test            
-maven-jar-plugin -------------------------------------------------------
-    + package                | default-jar           | jar             
-maven-assembly-plugin --------------------------------------------------
-    + package                | default               | single          
-pitest-maven -----------------------------------------------------------
-    + verify                 | pit-test              | mutationCoverage
-spotbugs-maven-plugin --------------------------------------------------
-    + verify                 | default               | check           
-sonar-maven-plugin -----------------------------------------------------
-    + verify                 | sonar                 | sonar           
-maven-install-plugin ---------------------------------------------------
-    + install                | default-install       | install         
-maven-deploy-plugin ----------------------------------------------------
-    + deploy                 | default-deploy        | deploy          
-[INFO] ------------------------------------------------------------------------
+mvn clean verify sonar:sonar
 ```
 
-
+## To cancel the noise in build log, like Downloading.... Progress report..... Downloaded, add -ntp to the mvn command:
+```
+mvn clean verify sonar:sonar -ntp
+```
+## To run this project run following maven command:
+```
+java -jar .\target\leansdlc-reference-project-*.jar
+```
 This project uses following plugins and tools - 
 -	It uses [errorprone](https://github.com/google/error-prone/) to catch common Java programming mistake during compile time.
 -	It uses PMD Check and CPD check to catch static code analysis issue during **validate** phase even before compiling the code. 
@@ -308,4 +272,4 @@ Quality Gate as JSON:
 ![Sonar Measure](/src/main/resources/SonarMeasure.JPG)
 
 
-@vikash1976@gmail.com
+@vikash.pandey@fisglobal.com
