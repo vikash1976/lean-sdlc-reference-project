@@ -6,7 +6,8 @@ pipeline {
     NEXUS_VERSION = "nexus3"
     NEXUS_PROTOCOL = "http"
     NEXUS_URL = "localhost:8081"
-    NEXUS_REPOSITORY = "maven-snapshots"
+    NEXUS_REALEASE_REPOSITORY = "maven-releases"
+    NEXUS_SNAPSHOTS_REPOSITORY = "maven-snapshots"
     NEXUS_CREDENTIAL_ID = "nexus_cred"
   }
   stages {
@@ -27,6 +28,7 @@ pipeline {
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
+                    NEXUS_REPOSITORY = ${pom.version}.endsWith('SHAPSHOT') ? NEXUS_SNAPSHOTS_REPOSITORY : NEXUS_RELEASES_REPOSITORY
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
