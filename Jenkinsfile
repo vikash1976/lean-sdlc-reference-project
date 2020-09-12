@@ -8,7 +8,7 @@ pipeline {
     stage("Build, Test and Quality Gate Analysis") {
       steps {
           
-          bat 'mvn clean verify -Dmaven.compiler.fork=true -Dmaven.compiler.executable="C:\Eee\jdk-11\bin\javac"'
+          bat 'mvn clean verify -Dmaven.compiler.fork=true -Dmaven.compiler.executable="C:\\Eee\\jdk-11\\bin\\javac"'
         
       }
     }
