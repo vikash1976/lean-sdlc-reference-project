@@ -8,7 +8,7 @@ pipeline {
     stage("Build, Test and Quality Gate Analysis") {
       steps {
         
-          mvn clean verify
+          sh 'mvn clean verify'
         
       }
     }
