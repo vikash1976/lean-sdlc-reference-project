@@ -28,7 +28,7 @@ pipeline {
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
-                    NEXUS_REPOSITORY = pom.version.split('-')[1] == 'SNAPSHOT' ? NEXUS_SNAPSHOTS_REPOSITORY : NEXUS_RELEASES_REPOSITORY
+                    NEXUS_REPOSITORY = pom.version.endsWith('SNAPSHOT') ? NEXUS_SNAPSHOTS_REPOSITORY : NEXUS_RELEASES_REPOSITORY
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
