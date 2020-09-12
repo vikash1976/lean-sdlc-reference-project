@@ -394,7 +394,8 @@
 				</plugins>
 			</build>
 		</profile>
-		<distributionManagement>
+	</profiles>
+	<distributionManagement>
 
 		<repository>
 
@@ -426,6 +427,6 @@
 
 	</distributionManagement>
 
-	</profiles>
-	
+
+
 </project>
