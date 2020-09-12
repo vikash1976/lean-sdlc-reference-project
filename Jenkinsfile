@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage("Build, Test and Quality Gate Analysis") {
       steps {
-        
+          bat 'set'
           bat 'mvn clean verify -X'
         
       }
