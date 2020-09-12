@@ -14,7 +14,7 @@ pipeline {
     stage("Build, Test and Quality Gate Analysis") {
       steps {
           bat 'set'
-          bat 'mvn clean verify -Dmaven.compiler.fork=true -Dmaven.compiler.executable="C:\\Eee\\jdk-11\\bin\\javac"'
+          bat 'mvn clean verify -Dmaven.test.skip=true -Djacoco.skip=true -Dpmd.skip=true -Dcpd.skip=true -Dspotbugs.skip=true -Dmaven.compiler.fork=true -Dmaven.compiler.executable="C:\\Eee\\jdk-11\\bin\\javac"'
         
       }
     }
@@ -28,7 +28,7 @@ pipeline {
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path;
                     artifactExists = fileExists artifactPath;
-                    NEXUS_REPOSITORY = ${pom.version.split('-')[1]} == 'SNAPSHOT' ? NEXUS_SNAPSHOTS_REPOSITORY : NEXUS_RELEASES_REPOSITORY
+                    NEXUS_REPOSITORY = pom.version.split('-')[1] == 'SNAPSHOT' ? NEXUS_SNAPSHOTS_REPOSITORY : NEXUS_RELEASES_REPOSITORY
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
