@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.example.vikash</groupId>
 	<artifactId>leansdlc-reference-project-rnd</artifactId>
-	<version>0.0.2.SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>leansdlc-spring-boot-reference-rnd</name>
 	<description>Demo project for sample lean sdlc pipeline</description>
 
