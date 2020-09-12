@@ -3,12 +3,12 @@ pipeline {
   agent any
   environment {
     PROJECT_NAME= "${project}"
-    NEXUS_VERSION = "nexus3"
-    NEXUS_PROTOCOL = "http"
-    NEXUS_URL = "localhost:8081"
+    //NEXUS_VERSION = "nexus3"
+    //NEXUS_PROTOCOL = "http"
+    //NEXUS_URL = "localhost:8081"
     NEXUS_RELEASES_REPOSITORY = "maven-releases"
     NEXUS_SNAPSHOTS_REPOSITORY = "maven-snapshots"
-    NEXUS_CREDENTIAL_ID = "nexus_cred"
+    //NEXUS_CREDENTIAL_ID = "nexus_cred"
   }
   stages {
     stage("Build, Test and Quality Gate Analysis") {
