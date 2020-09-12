@@ -7,8 +7,8 @@ pipeline {
   stages {
     stage("Build, Test and Quality Gate Analysis") {
       steps {
-          bat 'set JAVA_HOME=c:\Eee\jdk-11'
-          bat 'mvn clean verify -X'
+          bat 'set JAVA_HOME="c:\Eee\jdk-11"'
+          bat 'mvn clean verify'
         
       }
     }
