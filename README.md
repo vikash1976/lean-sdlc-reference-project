@@ -271,5 +271,3 @@ Quality Gate as JSON:
 **The quality score the project received**:  
 ![Sonar Measure](/src/main/resources/SonarMeasure.JPG)
 
-
-@vikash.pandey@fisglobal.com
