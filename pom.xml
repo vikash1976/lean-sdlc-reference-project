@@ -401,11 +401,11 @@
 
 			<uniqueVersion>false</uniqueVersion>
 
-			<id>maven-releases</id>
+			<id>artifactory-releases</id>
 
 			<name>Maven Releases</name>
 
-			<url>http://localhost:8081/repository/maven-releases/</url>
+			<url>https://vikashartifactory.jfrog.io/artifactory/maven-releases/</url>
 
 			<layout>default</layout>
 
@@ -415,18 +415,16 @@
 
 			<uniqueVersion>true</uniqueVersion>
 
-			<id>maven-snapshots</id>
+			<id>artifactory-snapshots</id>
 
 			<name>Maven Snapshots</name>
 
-			<url>http://localhost:8081/repository/maven-snapshots/</url>
+			<url>https://vikashartifactory.jfrog.io/artifactory/maven-snapshots/</url>
 
 			<layout>default</layout>
 
 		</snapshotRepository>
 
 	</distributionManagement>
-
-
 
 </project>
