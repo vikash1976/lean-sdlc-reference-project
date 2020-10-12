@@ -269,7 +269,7 @@
 					<failOnViolation>false</failOnViolation>
 
 					<printFailingErrors>true</printFailingErrors>
-					<targetJdk>11</targetJdk>
+					<targetJdk>${java.version}</targetJdk>
 					<linkXRef>false</linkXRef>
 					<!-- enable incremental analysis -->
 					<analysisCache>true</analysisCache>
