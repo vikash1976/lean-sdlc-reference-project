@@ -16,8 +16,6 @@
 	<description>Demo project for sample lean sdlc pipeline</description>
 
 	<properties>
-		<maven.compiler.source>1.11</maven.compiler.source>
-		<maven.compiler.target>1.11</maven.compiler.target>
 		<java.version>11</java.version>
 		<problem-spring-web.version>0.25.0</problem-spring-web.version>
 		<jacoco.version>0.8.3</jacoco.version>
@@ -35,6 +33,13 @@
 		<pit-maven-version>1.4.1</pit-maven-version>
 		<pitest-junit5-version>0.12</pitest-junit5-version>
 		<maven-surefire-version>2.22.0</maven-surefire-version>
+		<junit.platform.launcher.version>1.3.2</junit.platform.launcher.version>
+		<junit.vintage.engine.version>5.3.2</junit.vintage.engine.version>
+		<testcontainers.postgresql.version>1.11.3</testcontainers.postgresql.version>
+		<testcontainers.junit.jupiter.version>1.11.3</testcontainers.junit.jupiter.version>
+		<info.cukes.version>1.2.5</info.cukes.version>
+		<spotbugs.maven.plugin.version>4.0.4</spotbugs.maven.plugin.version>
+		<spotbugs.version>4.1.2</spotbugs.version>
 		<pitPhase>verify</pitPhase>
 	</properties>
 
@@ -93,13 +98,13 @@
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
-			<version>1.3.2</version>
+			<version>${junit.platform.launcher.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-			<version>5.3.2</version>
+			<version>${junit.vintage.engine.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -117,32 +122,32 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>1.11.3</version>
+			<version>${testcontainers.postgresql.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>1.11.3</version>
+			<version>${testcontainers.junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>1.2.5</version>
+			<version>${info.cukes.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-spring</artifactId>
-			<version>1.2.5</version>
+			<version>${info.cukes.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>1.2.5</version>
+			<version>${info.cukes.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -233,8 +238,8 @@
 				</executions>
 				<configuration>
 
-					<source>11</source>
-					<target>11</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<fork>true</fork>
 					<executable>${JAVA_HOME}/bin/javac</executable>
 					<compilerArgument>-Xlint:all</compilerArgument>
@@ -260,8 +265,6 @@
 				</dependencies>
 			</plugin>
 
-
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
@@ -273,7 +276,7 @@
 					<failOnViolation>false</failOnViolation>
 
 					<printFailingErrors>true</printFailingErrors>
-					<targetJdk>11</targetJdk>
+					<targetJdk>${java.version}</targetJdk>
 					<linkXRef>false</linkXRef>
 					<!-- enable incremental analysis -->
 					<analysisCache>true</analysisCache>
@@ -298,14 +301,14 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>4.0.4</version>
+				<version>${spotbugs.maven.plugin.version}</version>
 				<dependencies>
 					<!-- overwrite dependency on spotbugs if you want to specify the version 
 						of spotbugs -->
 					<dependency>
 						<groupId>com.github.spotbugs</groupId>
 						<artifactId>spotbugs</artifactId>
-						<version>4.1.2</version>
+						<version>${spotbugs.version}</version>
 					</dependency>
 				</dependencies>
 				<configuration>
@@ -396,5 +399,4 @@
 		</profile>
 
 	</profiles>
-	
 </project>
