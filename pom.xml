@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.example.vikash</groupId>
 	<artifactId>leansdlc-reference-project-rnd</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<name>leansdlc-spring-boot-reference-rnd</name>
 	<description>Demo project for sample lean sdlc pipeline</description>
 
@@ -41,6 +41,12 @@
 		<spotbugs.maven.plugin.version>4.0.4</spotbugs.maven.plugin.version>
 		<spotbugs.version>4.1.2</spotbugs.version>
 		<pitPhase>verify</pitPhase>
+		<docker.repo>vikash1976</docker.repo>
+		<docker.tag>${project.version}</docker.tag>
+		<docker.registry>registry.hub.docker.com</docker.registry>
+		<docker.name>${docker.registry}/${docker.repo}/${project.artifactId}:${docker.tag}</docker.name>
+		<leansdlc.host>localhost</leansdlc.host>
+		<leansdlc.port>8080</leansdlc.port>
 	</properties>
 
 	<dependencies>
@@ -328,6 +334,55 @@
 		</plugins>
 	</build>
 	<profiles>
+		<profile>
+			<id>containerize</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>2.6.0</version>
+						<configuration>
+							<from>
+								<image>openjdk:11.0.4-jre-slim</image>
+							</from>
+							<to>
+								<image>${docker.name}</image>
+							</to>
+							<container>
+								<environment>
+									<_JAVA_OPTIONS>'-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005'</_JAVA_OPTIONS>
+									<swarm.http.port>8080</swarm.http.port>
+								</environment>
+								<ports>
+									<port>8080</port>
+									<port>5005</port>
+								</ports>
+								<jvmFlags>
+									<jvmFlag>-Xms512m</jvmFlag>
+									<jvmFlag>-Xdebug</jvmFlag>
+								</jvmFlags>
+								<!-- deprecated from 2.0.0
+								<useCurrentTimestamp>true</useCurrentTimestamp> -->
+								<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+							</container>
+							<allowInsecureRegistries>true</allowInsecureRegistries>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<!-- when you want to build against Docker deamon -->
+									<!--  <gooal>dockerBuild</goal> -->
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>mutationTest</id>
 			<build>

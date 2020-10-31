@@ -49,6 +49,7 @@ class UserControllerIT {
         this.userList.add(new User(1L, "user1@gmail.com", "pwd1","User1"));
         this.userList.add(new User(2L, "user2@gmail.com", "pwd2","User2"));
         this.userList.add(new User(3L, "user3@gmail.com", "pwd3","User3"));
+        this.userList.add(new User(4L, "user4@gmail.com", "pwd4","User4"));
 
         objectMapper.registerModule(new ProblemModule());
         objectMapper.registerModule(new ConstraintViolationProblemModule());
