@@ -14,6 +14,10 @@ In case you prefer to have a different set of measures and threshold values, we 
 -	[Is SonarQube Replacement for Checkstyle, PMD, FindBugs?](https://stackoverflow.com/questions/5479019/is-sonarqube-replacement-for-checkstyle-pmd-findbugs)
 -	[Comparision between SonarQube and Error Prone](https://java.libhunt.com/compare-sonarqube-vs-error-prone)
 
+## To package this project as Docker container and push to your docker registry, run following maven command:
+```
+mvn package -Pcontainerize -Djib.httpTimeout=100000
+```
 ## To build this project, run following maven command:
 ```
 mvn clean verify sonar:sonar -PmutationTest,integrationTest
